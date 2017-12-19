@@ -6,11 +6,9 @@ public class Queue {
     public String queue[] = new String[100];
     private int putNumber;
     private int getNumber;
-
     Queue() {
 
     }
-
     synchronized boolean put(String input) {
         if (queue[putNumber] == null) {
             queue[putNumber] = input;
@@ -26,12 +24,19 @@ public class Queue {
             return false;
         }
     }
-
     synchronized boolean get() {
         if (queue[getNumber] != null) {
             return true;
         } else {
             return false;
+        }
+    }
+    synchronized String getValue(){
+        if (queue[getNumber] != null) {
+           return queue[getNumber];
+           queue[getNumber] = null;
+        } else {
+            return null;
         }
     }
 }
