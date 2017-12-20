@@ -34,9 +34,12 @@ public class Queue {
     synchronized String getValue(){
         if (queue[getNumber] != null) {
            return queue[getNumber];
-           queue[getNumber] = null;
+           //need to separate this into new function probably
         } else {
             return null;
         }
+    }
+    synchronized void finishPut() {
+        queue[getNumber] = null;
     }
 }

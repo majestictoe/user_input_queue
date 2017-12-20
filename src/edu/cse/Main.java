@@ -11,16 +11,18 @@ import javafx.scene.control.Button;
 import java.util.Objects;
 
 public class Main extends Application{
+    Queue queue = new Queue();
+    Label question = new Label("Type something.");
+    TextField input = new TextField ();
+    HBox prompt = new HBox();
+    Button submit = new Button("Submit");
+    Label output = new Label("");
+    VBox layout = new VBox();
     public void start (Stage primaryStage) throws Exception {
         Queue queue = new Queue();
-        Label question = new Label("Type something.");
-        TextField input = new TextField ();
-        HBox prompt = new HBox();
+        Getter myGetter = new Getter(queue);
         prompt.getChildren().addAll(question, input);
         prompt.setSpacing(10);
-        Button submit = new Button("Submit");
-        Label output = new Label("");
-        VBox layout = new VBox();
         layout.setSpacing(10);
         submit.setOnAction((e) -> {
             if (input.getText() != null) {

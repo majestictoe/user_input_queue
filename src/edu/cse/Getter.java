@@ -10,6 +10,8 @@ public class Getter implements Runnable{
             while(!queue.get()){
                 Thread.currentThread().yield();
             }
+            System.out.println (queue.getValue());
+            queue.finishPut();
         }
     }
 }
