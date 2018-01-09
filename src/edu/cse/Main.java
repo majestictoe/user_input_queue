@@ -10,14 +10,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 import java.util.Objects;
 
 public class Main extends Application{
     static Queue _queue;
+    static Text _text;
     //static Label _output;
-    static ScrollPane _scroll;
-    static VBox _labelHolder;
+//    static ScrollPane _scroll;
+//    static VBox _labelHolder;
     public void start (final Stage primaryStage) {
         Thread.currentThread().setName("GUI Thread");
         Label question = new Label("Type something.");
@@ -38,10 +40,11 @@ public class Main extends Application{
             }
         });
         prompt.getChildren().addAll(question, input);
-        layout.getChildren().addAll(prompt,submit,_scroll);
+//        layout.getChildren().addAll(prompt,submit,_scroll);
+        layout.getChildren().addAll(prompt,submit,_text);
         Group s1 = new Group();
         s1.getChildren().addAll(layout);
-        Scene scene1 = new Scene(s1,310,100);
+        Scene scene1 = new Scene(s1,310,200);
         primaryStage.setScene(scene1);
         primaryStage.setTitle("fvhvbkbd");
         primaryStage.show();
@@ -50,12 +53,15 @@ public class Main extends Application{
     public static void main(String[] args) {
         //_output = new Label("bjhbh");
         _queue = new Queue();
-        _labelHolder = new VBox();
-        _scroll = new ScrollPane();
-        _scroll.setContent(_labelHolder);
-        _scroll.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-        _scroll.fitToWidthProperty();
-        Getter myGetter = new Getter(_queue, _labelHolder);
+        _text = new Text();
+        _text.setWrappingWidth(310);
+//        _labelHolder = new VBox();
+//        _scroll = new ScrollPane();
+//        _scroll.setContent(_labelHolder);
+//        _scroll.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+//        _scroll.fitToWidthProperty();
+//        Getter myGetter = new Getter(_queue, _labelHolder);
+        Getter myGetter = new Getter(_queue,_text);
         Thread getterThread = new Thread(myGetter);
         getterThread.start();
 
