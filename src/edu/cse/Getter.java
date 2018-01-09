@@ -1,13 +1,15 @@
 package edu.cse;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
+import javafx.application.Platform;
 
 public class Getter implements Runnable{
     String[] values;
     Queue queue;
-    Label lab;
-    Getter(Queue q, Label label) {
+    private VBox labelHolder;
+    Getter(Queue q, VBox scrollyboy) {
         queue = q;
-        lab = label;
+        labelHolder = scrollyboy;
     }
     public void run(){
         Thread.currentThread().setName("GETTER Thread");
@@ -19,11 +21,14 @@ public class Getter implements Runnable{
                 values = queue.getValues();
             }
             System.out.println (values[0]);
+ //           Platform.runLater(() -> {
+                //lab.setText(values[0]);
+ //           });
+            //lab.setText(values[0]);
+            Label lab = new Label();
             lab.setText(values[0]);
+            labelHolder.getChildren().add(lab);
             queue.finishPut();
         }
-    }
-    synchronized String currentOutput(){
-        return values[0];
     }
 }
