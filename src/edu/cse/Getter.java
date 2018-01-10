@@ -34,7 +34,7 @@ public class Getter implements Runnable{
 //            Label lab = new Label();
 //            lab.setText(values[0]);
 //            labelHolder.getChildren().add(lab);
-            outputBoi.setText(values[0]);
+            outputBoi.setText("You: "+values[0]+"\n"+outputBoi.getText());
             queue.finishPut();
         }
     }
