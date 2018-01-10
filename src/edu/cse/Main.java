@@ -40,6 +40,7 @@ public class Main extends Application{
                 while (!didPut) {
                     Thread.currentThread().yield();
                     _queue.put(_input.getText());
+                    _input.clear();
                 }
             }
         });
@@ -68,6 +69,7 @@ public class Main extends Application{
                     while (!didPut) {
                         Thread.currentThread().yield();
                         _queue.put(_input.getText());
+                        _input.clear();
                     }
                 }
             }

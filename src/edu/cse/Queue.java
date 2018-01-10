@@ -41,6 +41,8 @@ public class Queue {
         }
     }
     synchronized void finishPut() {
-        queue[getNumber-1] = null;
+        if (getNumber>0) {
+            queue[getNumber - 1] = null;
+        }
     }
 }
